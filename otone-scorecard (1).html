@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study in China Assessment — OTONE Admissions</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #1a6b4a;
+    --green-light: #e8f5ee;
+    --green-mid: #2d9b6a;
+    --amber: #b85c00;
+    --amber-light: #fff3e8;
+    --ink: #1a1a1a;
+    --ink-muted: #5a5a5a;
+    --ink-faint: #9a9a9a;
+    --paper: #fdfcf8;
+    --paper-warm: #f5f2eb;
+    --border: #e2ddd4;
+    --radius: 12px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--paper);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+    background: var(--green);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  .logo-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+
+  .progress-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .progress-text {
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+
+  .progress-track {
+    width: 80px;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--green-mid);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  /* ── SCREENS ── */
+  .screen { display: none; animation: fadeUp 0.35s ease; }
+  .screen.active { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── INTRO SCREEN ── */
+  .intro-wrap {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  .intro-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 16px;
+  }
+
+  .intro-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 5vw, 42px);
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .intro-headline em {
+    font-style: italic;
+    color: var(--green);
+  }
+
+  .intro-body {
+    font-size: 16px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .intro-meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: var(--paper-warm);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--ink-muted);
+  }
+
+  .meta-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green-mid);
+    flex-shrink: 0;
+  }
+
+  .beacons-form-wrap {
+    margin-top: 8px;
+  }
+
+  /* ── QUESTION SCREEN ── */
+  .question-wrap {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  .q-category {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+  }
+
+  .q-number {
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin-bottom: 20px;
+  }
+
+  .q-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(20px, 3.5vw, 26px);
+    line-height: 1.35;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+
+  .options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+
+  .option-btn {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 20px;
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.5;
+    transition: border-color 0.18s, background 0.18s, transform 0.12s;
+    width: 100%;
+  }
+
+  .option-btn:hover {
+    border-color: var(--green-mid);
+    background: var(--green-light);
+    transform: translateX(3px);
+  }
+
+  .option-btn.selected {
+    border-color: var(--green);
+    background: var(--green-light);
+  }
+
+  .option-indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: border-color 0.18s, background 0.18s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .option-btn.selected .option-indicator {
+    border-color: var(--green);
+    background: var(--green);
+  }
+
+  .option-btn.selected .option-indicator::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #fff;
+  }
+
+  .nav-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .btn-back {
+    background: none;
+    border: 1.5px solid var(--border);
+    color: var(--ink-muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-back:hover { border-color: var(--ink-muted); color: var(--ink); }
+
+  .btn-next {
+    background: var(--green);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 13px 32px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.2s;
+    flex: 1;
+    max-width: 240px;
+  }
+
+  .btn-next:disabled { opacity: 0.35; cursor: not-allowed; }
+  .btn-next:not(:disabled):hover { background: #145a3c; }
+
+  /* ── RESULTS SCREEN ── */
+  .results-wrap {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  .result-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 16px;
+  }
+
+  .result-tier-badge {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .result-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(22px, 4vw, 32px);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .result-sub {
+    font-size: 15px;
+    color: var(--ink-muted);
+    margin-bottom: 28px;
+    line-height: 1.7;
+  }
+
+  .score-display {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .score-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52px;
+    line-height: 1;
+  }
+
+  .score-denom {
+    font-size: 18px;
+    color: var(--ink-faint);
+  }
+
+  .bar-track {
+    height: 10px;
+    background: var(--paper-warm);
+    border-radius: 5px;
+    margin-bottom: 32px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 5px;
+    width: 0%;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .insights-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 12px;
+  }
+
+  .insights-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .insight-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .insight-row.positive { background: var(--green-light); color: var(--ink); }
+  .insight-row.caution { background: var(--amber-light); color: var(--ink); }
+
+  .insight-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  .insight-icon.pos { background: var(--green-mid); }
+  .insight-icon.cau { background: var(--amber); }
+
+  .insight-icon svg { width: 10px; height: 10px; }
+
+  .feedback-section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .feedback-block {
+    border-radius: var(--radius);
+    padding: 20px;
+    border: 1px solid transparent;
+  }
+
+  .feedback-block.positive {
+    background: var(--green-light);
+    border-color: #c2e4d0;
+  }
+
+  .feedback-block.caution {
+    background: var(--amber-light);
+    border-color: #f5d9bc;
+  }
+
+  .feedback-block-title {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .feedback-block.positive .feedback-block-title { color: var(--green); }
+  .feedback-block.caution .feedback-block-title { color: var(--amber); }
+
+  .feedback-block-body {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+
+  .social-label {
+    font-size: 13px;
+    color: var(--ink-faint);
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .social-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .social-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    background: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    transition: border-color 0.18s, background 0.18s;
+    cursor: pointer;
+  }
+
+  .social-btn:hover { border-color: var(--ink-muted); background: var(--paper-warm); }
+
+  .social-icon { width: 16px; height: 16px; border-radius: 4px; }
+
+  .result-footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin-top: 20px;
+    font-style: italic;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 28px 0;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 480px) {
+    .intro-meta { flex-direction: column; gap: 12px; }
+    .nav-row { flex-direction: column-reverse; }
+    .btn-next { max-width: 100%; width: 100%; }
+    .btn-back { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">
+    <div class="logo-mark">OT</div>
+    <span class="logo-name">OTONE Admissions</span>
+  </div>
+  <div class="progress-header" id="progress-header" style="display:none;">
+    <span class="progress-text" id="progress-text">1 / 12</span>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+  </div>
+</header>
+
+<!-- ══ INTRO SCREEN ══ -->
+<div class="screen active" id="screen-intro">
+  <div class="intro-wrap">
+    <p class="intro-eyebrow">OTONE Admissions — Study in China Assessment</p>
+    <h1 class="intro-headline">How ready are you to <em>study in China?</em></h1>
+    <p class="intro-body">Answer 12 short questions and we will give you a personalised picture of where you stand — and exactly what to do next. It takes less than 3 minutes.</p>
+    <div class="intro-meta">
+      <div class="meta-item"><div class="meta-dot"></div>12 questions</div>
+      <div class="meta-item"><div class="meta-dot"></div>Under 3 minutes</div>
+      <div class="meta-item"><div class="meta-dot"></div>Personalised result</div>
+      <div class="meta-item"><div class="meta-dot"></div>Instant detailed feedback</div>
+    </div>
+    <div class="beacons-form-wrap">
+      <div id="c69383ee-dc66-48ca-8b37-2e181fbc418e"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ QUESTION SCREEN ══ -->
+<div class="screen" id="screen-question">
+  <div class="question-wrap">
+    <p class="q-category" id="q-category"></p>
+    <p class="q-number" id="q-number"></p>
+    <h2 class="q-text" id="q-text"></h2>
+    <div class="options-list" id="options-list"></div>
+    <div class="nav-row">
+      <button class="btn-back" id="btn-back" onclick="prevQuestion()">← Back</button>
+      <button class="btn-next" id="btn-next" onclick="nextQuestion()" disabled>Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ RESULTS SCREEN ══ -->
+<div class="screen" id="screen-results">
+  <div class="results-wrap">
+    <p class="result-eyebrow">Your assessment result</p>
+    <div class="result-tier-badge" id="result-badge"></div>
+    <h2 class="result-headline" id="result-headline"></h2>
+    <p class="result-sub" id="result-sub"></p>
+
+    <div class="score-display">
+      <span class="score-number" id="score-number"></span>
+      <span class="score-denom">/ 90</span>
+    </div>
+    <div class="bar-track">
+      <div class="bar-fill" id="bar-fill"></div>
+    </div>
+
+    <p class="insights-label">What your score reflects</p>
+    <div class="insights-list" id="insights-list"></div>
+
+    <div class="feedback-section" id="feedback-section"></div>
+
+    <div class="divider"></div>
+
+    <p class="social-label">Follow OTONE for tips, programme updates, and student stories from China:</p>
+    <div class="social-row">
+      <a class="social-btn" href="https://instagram.com/official_otone" target="_blank">
+        <svg class="social-icon" viewBox="0 0 16 16" fill="none">
+          <rect width="16" height="16" rx="4" fill="#E1306C"/>
+          <rect x="4" y="4" width="8" height="8" rx="2" stroke="#fff" stroke-width="1.2" fill="none"/>
+          <circle cx="8" cy="8" r="2" stroke="#fff" stroke-width="1.2" fill="none"/>
+          <circle cx="11" cy="5" r="0.7" fill="#fff"/>
+        </svg>
+        Follow on Instagram
+      </a>
+    </div>
+    <p class="result-footer">OTONE Admissions — helping students build their future in China.</p>
+  </div>
+</div>
+
+<script>
+const questions = [
+  {
+    category: "Academic Eligibility",
+    text: "Have you completed your high school diploma or bachelor's degree — or are you currently in your final year?",
+    type: "yn",
+    dealbreaker: true,
+    options: [
+      { label: "Yes", points: 10 },
+      { label: "No", points: 0 }
+    ]
+  },
+  {
+    category: "Academic Eligibility",
+    text: "Is your academic record generally good — no major failures or expulsions?",
+    type: "yn",
+    dealbreaker: true,
+    options: [
+      { label: "Yes", points: 8 },
+      { label: "No", points: 0 }
+    ]
+  },
+  {
+    category: "Academic Eligibility",
+    text: "Which level of study are you targeting in China?",
+    type: "mc",
+    options: [
+      { label: "Bachelor's degree", points: 8 },
+      { label: "Master's degree", points: 8 },
+      { label: "I'm not sure yet", points: 3 },
+      { label: "PhD or other", points: 1 }
+    ]
+  },
+  {
+    category: "Financial Readiness",
+    text: "Are you actively looking for a scholarship to help fund your studies in China?",
+    type: "yn",
+    options: [
+      { label: "Yes — I need financial support", points: 6 },
+      { label: "No — I can fund it myself", points: 6 }
+    ]
+  },
+  {
+    category: "Financial Readiness",
+    text: "If a scholarship does not cover everything, could you or your family cover approximately $3,000 USD per year in tuition?",
+    type: "mc",
+    options: [
+      { label: "Yes, this is manageable for us", points: 8 },
+      { label: "It would be a stretch but we could manage", points: 4 },
+      { label: "We would need full financial support", points: 1 }
+    ]
+  },
+  {
+    category: "Financial Readiness",
+    text: "Can you budget approximately $250–350 USD per month for living expenses in China?",
+    type: "yn",
+    options: [
+      { label: "Yes, we have planned for this", points: 8 },
+      { label: "No — this would be difficult without help", points: 1 }
+    ]
+  },
+  {
+    category: "Motivation & Desire",
+    text: "What is your biggest reason for wanting to study in China?",
+    type: "mc",
+    options: [
+      { label: "Career and international business opportunities", points: 8 },
+      { label: "Quality education at low or no cost", points: 8 },
+      { label: "Chinese language and cultural experience", points: 5 },
+      { label: "Still exploring — not sure yet", points: 1 }
+    ]
+  },
+  {
+    category: "Motivation & Desire",
+    text: "Do you feel that studying in China could give you a real advantage in your career or future goals?",
+    type: "yn",
+    options: [
+      { label: "Yes, I strongly believe so", points: 6 },
+      { label: "Not sure yet", points: 2 }
+    ]
+  },
+  {
+    category: "Motivation & Desire",
+    text: "Beyond getting admitted, how important is it to you to build real career or business opportunities while studying in China?",
+    type: "mc",
+    options: [
+      { label: "Very — I want a career or business, not just a diploma", points: 8 },
+      { label: "Important — I want to graduate with skills and return home", points: 5 },
+      { label: "I mainly just want the diploma for now", points: 2 }
+    ]
+  },
+  {
+    category: "Urgency",
+    text: "When are you hoping to begin your studies in China?",
+    type: "mc",
+    options: [
+      { label: "This year — next intake", points: 10 },
+      { label: "Next year", points: 6 },
+      { label: "In 2–3 years", points: 2 },
+      { label: "No specific timeline yet", points: 0 }
+    ]
+  },
+  {
+    category: "Urgency",
+    text: "Have you already started an application to a Chinese university, or begun researching specific programmes?",
+    type: "yn",
+    options: [
+      { label: "Yes, I have started", points: 6 },
+      { label: "No, I have not started yet", points: 6 }
+    ]
+  },
+  {
+    category: "Urgency",
+    text: "Would you like to receive scholarship deadlines, programme updates, and tips from students already in China — directly to your email?",
+    type: "mc",
+    options: [
+      { label: "Yes — send me updates by email and WhatsApp", points: 4 },
+      { label: "Yes — email only please", points: 4 },
+      { label: "Maybe later", points: 1 }
+    ]
+  }
+];
+
+const tiers = [
+  {
+    min: 68, max: 90,
+    label: "Strong Profile",
+    badgeBg: "#e8f5ee", badgeColor: "#1a6b4a",
+    barColor: "#2d9b6a",
+    scoreColor: "#1a6b4a",
+    headline: "Your profile is well-positioned for admission in China.",
+    sub: "Based on your answers, you meet several key criteria that universities in China actively look for in international applicants.",
+    insights: [
+      { type: "positive", text: "Your academic background is a strong foundation for a competitive application." },
+      { type: "positive", text: "You have a clear sense of purpose and direction for your time in China." },
+      { type: "positive", text: "Your financial readiness makes you a realistic candidate even without full coverage." }
+    ],
+    feedback: [
+      { type: "positive", title: "What this means for you", body: "You are among the stronger candidates we see at this stage. Your profile suggests you are genuinely ready to take the next step — not just interested, but positioned to act. Universities in China welcome applicants who come prepared and purposeful, and your answers reflect exactly that." },
+      { type: "positive", title: "What to do right now", body: "Start gathering your documents today — do not wait for a deadline to force your hand. Make sure your passport is valid for at least two years, request certified copies of your academic transcripts, and identify two or three people who can write strong recommendation letters on your behalf. Also find out where you can complete an official medical examination in your city, as this is required by most Chinese universities and is often overlooked until the last moment." },
+      { type: "positive", title: "Your next step", body: "Shortlist two to three programmes that genuinely interest you across different fields or universities. Having options gives you flexibility and improves your chances of securing a place. Our team will be in touch to discuss which programmes and universities match your specific profile most closely." }
+    ]
+  },
+  {
+    min: 45, max: 67,
+    label: "Promising Profile",
+    badgeBg: "#eeedfe", badgeColor: "#3c3489",
+    barColor: "#7f77dd",
+    scoreColor: "#3c3489",
+    headline: "You have real potential — a few things to strengthen before applying.",
+    sub: "Your motivation is clear and China could be a great fit. Addressing one or two areas would significantly improve your readiness.",
+    insights: [
+      { type: "positive", text: "Your motivation and goals are well aligned with what studying in China can offer." },
+      { type: "caution", text: "Financial planning may need some attention before committing to an application." },
+      { type: "caution", text: "A clearer academic direction would strengthen your profile considerably." }
+    ],
+    feedback: [
+      { type: "positive", title: "What this means for you", body: "Your profile shows genuine intent and a real desire to make something of your time in China. That is the most important foundation. What your score also reflects is that there are one or two practical areas — most likely around finances or academic direction — that need more clarity before your application would be as strong as it can be. This is very normal at this stage, and it is fixable." },
+      { type: "caution", title: "What to work on", body: "Start building your document file now even if you are not yet ready to apply — passport validity, academic transcripts, and recommendation letters all take time to organise. In parallel, spend some time researching two or three specific programmes in China that match your background and goals. Having a clear academic direction transforms a vague application into a compelling one. If finances are a concern, focus your research specifically on programmes that offer full tuition coverage." },
+      { type: "positive", title: "Your next step", body: "Stay connected with us through our newsletter and Instagram. Over the coming weeks we will share practical information about programmes, funding options, and what the application process actually looks like — all of which will help you make a confident, well-timed decision." }
+    ]
+  },
+  {
+    min: 22, max: 44,
+    label: "Early Stage",
+    badgeBg: "#fff3e8", badgeColor: "#b85c00",
+    barColor: "#ef9f27",
+    scoreColor: "#b85c00",
+    headline: "You are at the beginning of your journey — and that is a good place to start.",
+    sub: "Your interest in China is clear. There are a few important foundations to build before an application would be well-timed.",
+    insights: [
+      { type: "positive", text: "You have a genuine curiosity about studying abroad — that is the most important starting point." },
+      { type: "caution", text: "Your academic situation or timeline may need a little more time before applying is the right move." },
+      { type: "caution", text: "Building more clarity around your goals and finances will make a significant difference." }
+    ],
+    feedback: [
+      { type: "positive", title: "What this means for you", body: "The fact that you are asking these questions now — before you are fully ready — is actually a strength. The students who succeed in China are almost always the ones who prepared well in advance, not the ones who rushed at the last minute. Your score reflects an early stage, not an inability to get there. The path is clear, it just requires some groundwork first." },
+      { type: "caution", title: "What to focus on right now", body: "The most valuable things you can do today are also the simplest. If you do not yet have a valid passport, make that your first priority — it is the single most important document in any international study process. Focus on finishing your current studies with the best possible results, as your academic transcript is the foundation of any application. Begin identifying one or two people in your life who could eventually write a recommendation letter for you, and find out whether your city or region has a clinic or hospital where you can complete an official medical examination for travel or study abroad." },
+      { type: "caution", title: "Your next step", body: "Take some time to explore what China has to offer academically. Browse university websites, look at available programmes, and allow yourself to imagine two or three fields of study that genuinely interest you. Having even a rough direction is the beginning of a real plan. We will keep you informed through our newsletter as you build towards being ready." }
+    ]
+  },
+  {
+    min: 0, max: 21,
+    label: "Still Exploring",
+    badgeBg: "#f1efe8", badgeColor: "#5f5e5a",
+    barColor: "#b4b2a9",
+    scoreColor: "#5f5e5a",
+    headline: "You are exploring — keep going. The right moment will come.",
+    sub: "Studying in China may still be the right path for you. There are a few foundational things to put in place first, and you are not alone in this stage.",
+    insights: [
+      { type: "positive", text: "Taking this assessment already shows initiative — most people never start." },
+      { type: "caution", text: "Your academic or financial situation may need some time before an application is realistic." },
+      { type: "caution", text: "Getting clear on your goals and timeline will be the most valuable thing you can do right now." }
+    ],
+    feedback: [
+      { type: "positive", title: "What this means for you", body: "Your score tells us that you are at an early point in your journey — and that is completely fine. Many of the students we have successfully placed began exactly where you are now, sometimes a year or two before they were actually ready to apply. What made the difference was how wisely they used the time in between. Taking this assessment is already a step most people never take." },
+      { type: "caution", title: "The most important things to do now", body: "Concentrate on completing your current studies with the strongest possible results — your academic transcript is the foundation of any future application, and the grades you earn now will follow you into that process. If you do not yet have a passport, prioritise getting one as soon as possible, since it is required for every step of the international study process. Start thinking about teachers, professors, or community leaders who know you well and could one day write a recommendation on your behalf. And find out whether your area has a clinic or hospital that offers official medical examinations, as this is a requirement you will need to meet when the time comes." },
+      { type: "caution", title: "Your next step", body: "Use this time to learn. Browse Chinese university websites, explore different fields of study, and let yourself imagine what you would genuinely want to build during your time there. There is no pressure and no deadline right now — just an invitation to keep the idea alive and let it take shape. We will be in touch with useful information through our newsletter." }
+    ]
+  }
+];
+
+let current = 0;
+let answers = new Array(questions.length).fill(null);
+let respondentName = '';
+
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyJRqFzXSb0x_g7t6OqN9dDsS1_2rvrKAf8SWdgktfD4W6Oam5VRJb7RDcH_ui35_rs/exec';
+
+// ── Listen for Beacons form submission ──
+window.addEventListener('message', function(event) {
+  if (event.data && event.data.type === 'beacons:emailForm:submitted') {
+    const data = event.data.payload || {};
+    respondentName = (data.name || data.firstName || '').trim();
+    launchAssessment();
+  }
+});
+
+// ── Fallback: also watch DOM for Beacons success state ──
+function watchBeaconsForm() {
+  const observer = new MutationObserver(function() {
+    const successEl = document.querySelector('#c69383ee-dc66-48ca-8b37-2e181fbc418e [class*="success"], #c69383ee-dc66-48ca-8b37-2e181fbc418e [class*="thank"], #c69383ee-dc66-48ca-8b37-2e181fbc418e [class*="confirmed"]');
+    if (successEl && !document.getElementById('screen-intro').classList.contains('launched')) {
+      document.getElementById('screen-intro').classList.add('launched');
+      setTimeout(launchAssessment, 800);
+    }
+  });
+  const container = document.getElementById('c69383ee-dc66-48ca-8b37-2e181fbc418e');
+  if (container) observer.observe(container, { childList: true, subtree: true });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(watchBeaconsForm, 1500);
+});
+
+function launchAssessment() {
+  document.getElementById('screen-intro').classList.remove('active');
+  document.getElementById('screen-question').classList.add('active');
+  document.getElementById('progress-header').style.display = 'flex';
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = questions[current];
+  document.getElementById('q-category').textContent = q.category;
+  document.getElementById('q-number').textContent = 'Question ' + (current + 1) + ' of ' + questions.length;
+  document.getElementById('q-text').textContent = q.text;
+
+  const pct = ((current + 1) / questions.length) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = (current + 1) + ' / ' + questions.length;
+
+  const list = document.getElementById('options-list');
+  list.innerHTML = '';
+
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn' + (answers[current] === i ? ' selected' : '');
+    btn.innerHTML = '<div class="option-indicator"></div><span>' + opt.label + '</span>';
+    btn.onclick = () => selectOption(i);
+    list.appendChild(btn);
+  });
+
+  document.getElementById('btn-next').disabled = answers[current] === null;
+  document.getElementById('btn-back').style.visibility = current === 0 ? 'hidden' : 'visible';
+
+  const isLast = current === questions.length - 1;
+  document.getElementById('btn-next').textContent = isLast ? 'See my result →' : 'Continue →';
+}
+
+function selectOption(index) {
+  answers[current] = index;
+  document.querySelectorAll('.option-btn').forEach((btn, i) => {
+    btn.classList.toggle('selected', i === index);
+  });
+  document.getElementById('btn-next').disabled = false;
+}
+
+function nextQuestion() {
+  if (answers[current] === null) return;
+  if (current < questions.length - 1) {
+    current++;
+    document.getElementById('screen-question').classList.remove('active');
+    setTimeout(() => {
+      renderQuestion();
+      document.getElementById('screen-question').classList.add('active');
+    }, 80);
+  } else {
+    showResults();
+  }
+}
+
+function prevQuestion() {
+  if (current > 0) {
+    current--;
+    document.getElementById('screen-question').classList.remove('active');
+    setTimeout(() => {
+      renderQuestion();
+      document.getElementById('screen-question').classList.add('active');
+    }, 80);
+  }
+}
+
+function showResults() {
+  let total = 0;
+  answers.forEach((ans, i) => {
+    if (ans !== null) total += questions[i].options[ans].points;
+  });
+
+  const tier = tiers.find(t => total >= t.min && total <= t.max) || tiers[3];
+
+  document.getElementById('screen-question').classList.remove('active');
+  document.getElementById('progress-header').style.display = 'none';
+  document.getElementById('screen-results').classList.add('active');
+
+  const badge = document.getElementById('result-badge');
+  badge.textContent = tier.label;
+  badge.style.background = tier.badgeBg;
+  badge.style.color = tier.badgeColor;
+
+  document.getElementById('result-headline').textContent = tier.headline;
+  document.getElementById('result-sub').textContent = tier.sub;
+
+  const scoreEl = document.getElementById('score-number');
+  scoreEl.textContent = total;
+  scoreEl.style.color = tier.scoreColor;
+
+  const bar = document.getElementById('bar-fill');
+  bar.style.background = tier.barColor;
+  setTimeout(() => {
+    bar.style.width = Math.round((total / 90) * 100) + '%';
+  }, 200);
+
+  const insightsList = document.getElementById('insights-list');
+  insightsList.innerHTML = '';
+  tier.insights.forEach(ins => {
+    const row = document.createElement('div');
+    row.className = 'insight-row ' + (ins.type === 'positive' ? 'positive' : 'caution');
+    const iconColor = ins.type === 'positive' ? '#2d9b6a' : '#b85c00';
+    const iconPath = ins.type === 'positive'
+      ? '<polyline points="1,5 4,8 9,2" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
+      : '<line x1="5" y1="1" x2="5" y2="5.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><circle cx="5" cy="7.5" r="0.8" fill="#fff"/>';
+    row.innerHTML = `
+      <div class="insight-icon ${ins.type === 'positive' ? 'pos' : 'cau'}" style="background:${iconColor}">
+        <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">${iconPath}</svg>
+      </div>
+      <span>${ins.text}</span>`;
+    insightsList.appendChild(row);
+  });
+
+  const feedbackSection = document.getElementById('feedback-section');
+  feedbackSection.innerHTML = '';
+  tier.feedback.forEach(fb => {
+    const block = document.createElement('div');
+    block.className = 'feedback-block ' + fb.type;
+    block.innerHTML = '<p class="feedback-block-title">' + fb.title + '</p><p class="feedback-block-body">' + fb.body + '</p>';
+    feedbackSection.appendChild(block);
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // ── Submit to Google Sheets ──
+  const payload = {
+    name: respondentName,
+    score: total,
+    tier: tier.label,
+    timestamp: new Date().toISOString(),
+    answers: questions.map((q, i) => ({
+      question: q.text,
+      answer: answers[i] !== null ? q.options[answers[i]].label : '—',
+      points: answers[i] !== null ? q.options[answers[i]].points : 0
+    }))
+  };
+
+  if (GOOGLE_SCRIPT_URL !== 'YOUR_SCRIPT_URL_HERE') {
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch(() => {});
+  }
+}
+</script>
+<script>
+  (function () {
+    var s = document.createElement("script");
+    var t = Math.floor(new Date().getTime() / 120000);
+    s.type = "module";
+    s.async = 1;
+    s.src = `https://beacons.ai/embeds/emailForm.js?v=${t}&b=solutionprovider&f=c69383ee-dc66-48ca-8b37-2e181fbc418e`;
+    document.body.appendChild(s);
+  })();
+</script>
+</body>
+</html>
